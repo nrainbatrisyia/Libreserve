@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibReserve Sign Up</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #3f2262; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-title {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 100px;
+            letter-spacing: 1px;
+        }
+
+        .top-logo {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .top-logo img {
+            width: 100px;
+        }
+
+        .top-logo p {
+            margin: 5px 0 0 0;
+            font-size: 16px;
+        }
+
+        .signup-box {
+            background-color: #e5e7eb;
+            width: 900px;
+            height: 410px;
+            padding: 45px;
+            margin-top: 30px;
+            border-radius: 20px;
+        }
+
+        .signup-box h2 {
+            text-align: center;
+            margin-top: 0;
+            font-size: 24px;
+            margin-bottom: 35px;
+            color: #222;
+            font-weight: bold;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            row-gap: 5px;
+            column-gap: 15px;
+            align-items: center;
+        }
+
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #222;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .button-row {
+            margin-top: 30px;
+            display: flex;
+            justify-content: right;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 10px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .reset-btn {
+            background-color: #b0bfb1;
+            color: black;
+        }
+
+        .reset-btn:hover {
+            background-color: #d4dfd5;
+        }
+
+        .register-btn {
+            background-color: #7fc443;
+            color: #133a1f;
+        }
+
+        .register-btn:hover {
+            background-color: #a0e86a;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            color: #d1d1d1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-title">WELCOME TO LIBRESERVE</div>
+    <a href="logIn.html" class="back-btn">&#8592; Back</a>
+
+    <div class="top-logo">
+        <img src="picture/white logo.jpg" alt="LibReserve Logo">
+    </div>
+
+    <div class="signup-box">
+        <h2>CREATE YOUR ACCOUNT</h2>
+
+        <div class="form-grid">
+
+            <label>FULL NAME</label>
+            <input type="text" placeholder="Please enter your full name">
+
+            <label>MATRIC NUMBER / ID </label>
+            <input type="text" placeholder="Please enter your matric number OR ID">
+
+            <label>EMAIL</label>
+            <input type="email" placeholder="e.g. xxxxxxxx@student.utem.edu.my">
+
+            <label>PHONE NUMBER</label>
+            <input type="text" placeholder="e.g. 0123456789">
+
+            <label>PASSWORD</label>
+            <input type="password" placeholder="Please enter your password">
+
+            <label>CONFIRM PASSWORD</label>
+            <input type="password" placeholder="Please re-enter your password">
+
+            <label>ROLE</label>
+            <select>
+                <option>STUDENT</option>
+                <option>STAFF</option>
+                <option>ADMIN</option>
+            </select>
+
+        </div>
+
+        <div class="button-row">
+            <button class="btn reset-btn">RESET</button>
+            <button class="btn register-btn">REGISTER</button>
+        </div>
+
+    </div>
+
+</body>
+</html>

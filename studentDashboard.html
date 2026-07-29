@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibReserve | Student Home</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="studentDash.css">
+</head>
+
+<body>
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div class="top-logo">
+            <img src="picture/white logo.jpg" alt="LibReserve Logo">
+        </div>
+
+        <nav>
+            <a href="studentDashboard.html" class="nav-link active"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="studentLevel.html" class="nav-link "><i class="fa-solid fa-building"></i>Level</a>
+            <a href="roomDetail.html" class="nav-link"><i class="fa-solid fa-door-open"></i>Room Detail</a>
+            <a href="profile.html" class="nav-link"><i class="fa-solid fa-user"></i>Profile</a>
+        </nav>
+
+        <div class="sidebar-profile">
+            <div class="profile-info">
+                <strong>NURAIN BATRISYIA BINTI MOHD NOR AZWAN</strong>
+            </div>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="welcome-header">
+            <h1>Welcome, NURAIN BATRISYIA BINTI MOHD NOR AZWAN!</h1>
+            <p>Manage your current and past study room bookings below.</p>
+        </header>
+
+        <div class="card upcoming">
+            <div class="card-header"><i class="fa-solid fa-calendar-check"></i>Upcoming Booking ( 2 )</div>
+
+            <div class="next-up-card">
+                <div>NEXT UP: <strong>Level 2</strong> at <strong>10:00 AM</strong></div>
+                <div>29 OCT 2025</div>
+            </div>
+
+            <div class="booking-list">
+                <div class="booking-item">
+                    <div class="booking-info">
+                        <strong>Level 2 - Carrel Room 7</strong>
+                        <div class="booking-details">
+                            <span><i class="fa-solid fa-clock"></i>10:00 AM - 12:00 PM</span>
+                            <span><i class="fa-solid fa-calendar-alt"></i>Oct 29, 2025</span>
+                        </div>
+                    </div>
+                    <div class="room-status">
+                        <span class="status-pill confirmed">Confirmed</span>
+                        <button class="btn btn-cancel">Cancel Booking</button>
+                    </div>
+                </div>
+
+                <div class="booking-item">
+                    <div class="booking-info">
+                        <strong>Level 3 - Discussion Room 1</strong>
+                        <div class="booking-details">
+                            <span><i class="fa-solid fa-clock"></i>10:00 AM - 12:00 PM</span>
+                            <span><i class="fa-solid fa-calendar-alt"></i>Oct 31, 2025</span>
+                        </div>
+                    </div>
+                    <div class="room-status">
+                        <span class="status-pill confirmed">Confirmed</span>
+                        <button class="btn btn-cancel">Cancel Booking</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card past">
+            <div class="card-header"><i class="fa-solid fa-history"></i>Past & Cancelled Booking ( 3 )</div>
+            
+            <div class="booking-list">
+                <div class="booking-item cancelled">
+                    <div class="booking-info">
+                        <strong>Level 4 - Carrel Room 28</strong>
+                        <div class="booking-details">
+                            <span><i class="fa-solid fa-clock"></i>10:00 AM - 12:00 PM</span>
+                            <span><i class="fa-solid fa-calendar-alt"></i>Oct 29, 2025</span>
+                        </div>
+                    </div>
+                    <div class="room-status">
+                        <span class="status-pill cancelled">Cancelled</span>
+                    </div>
+                </div>
+
+                <div class="booking-item completed">
+                    <div class="booking-info">
+                        <strong>Level 4 - Carrel Room 31</strong>
+                        <div class="booking-details">
+                            <span><i class="fa-solid fa-clock"></i>10:00 AM - 12:00 PM</span>
+                            <span><i class="fa-solid fa-calendar-alt"></i>Oct 16, 2025</span>
+                        </div>
+                    </div>
+                    <div class="room-status">
+                        <span class="status-pill completed">Completed</span>
+                    </div>
+                </div>
+
+                <div class="booking-item completed">
+                    <div class="booking-info">
+                        <strong>Level 2 - Carrel Room 1</strong>
+                        <div class="booking-details">
+                            <span><i class="fa-solid fa-clock"></i>10:00 AM - 12:00 PM</span>
+                            <span><i class="fa-solid fa-calendar-alt"></i>Oct 15, 2025</span>
+                        </div>
+                    </div>
+                    <div class="room-status">
+                        <span class="status-pill completed">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card activity">
+            <div class="card-header"><i class="fa-solid fa-check-circle"></i>Your Booking Activity</div>
+
+            <div class="activity-content">
+                <div class="score-section">
+                    <p>Check-in Score (Reliability)</p>
+                    <div class="gauge">
+                        <div class="gauge-inner">60%</div>
+                    </div>
+                </div>
+
+                <div class="breakdown-section">
+                    <h3>Booking Purpose Breakdown:</h3>
+
+                    <div class="breakdown-item">
+                        <span class="item-label">Group Study</span>
+                        <div class="bar-container"><div class="bar group-study"></div></div>
+                        <span class="item-percentage">60%</span>
+                    </div>
+
+                    <div class="breakdown-item">
+                        <span class="item-label">Presentation Practise</span>
+                        <div class="bar-container"><div class="bar presentation"></div></div>
+                        <span class="item-percentage">20%</span>
+                    </div>
+
+                    <div class="breakdown-item">
+                        <span class="item-label">Meeting (Club/Society)</span>
+                        <div class="bar-container"><div class="bar meeting"></div></div>
+                        <span class="item-percentage">20%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="report-issue-container">
+            <a href="reportForm.html" style="text-decoration: none;"> 
+                <button class="btn btn-report">
+                    <i class="fa-solid fa-triangle-exclamation"></i>Report Issue
+                </button>
+            </a>
+</div>
+        </div>
+    </main>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Dashboard loaded.");
+    });
+</script>
+
+</body>
+</html>

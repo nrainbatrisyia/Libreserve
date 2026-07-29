@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+    /* --- CSS Variables --- */
+    :root {
+        --sidebar-width: 280px;
+        --purple-dark: #3c1e64;
+        --purple-light: #5e3c88;
+        --background-light: #efefef;
+        --input-border: #c6c6ff;
+        --cancel-button: #d9534f;
+        --next-button: #3a8a3a; /* Green button */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background: var(--background-light);
+        font-size: 18px;
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    /* ========================================================= */
+    /* --- FINALIZED SIDEBAR STYLES --- */
+    /* ========================================================= */
+
+    .sidebar {
+        width: var(--sidebar-width);
+        background: var(--purple-dark);
+        color: white;
+        padding: 30px 0 0 0; 
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10;
+    }
+
+    .top-logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .top-logo img {
+        width: 130px;
+        /* Note: Image path 'picture/white logo.jpg' is assumed to be correct */
+    }
+
+    .sidebar nav {
+        width: 100%;
+        flex-grow: 1; 
+    }
+
+    .nav-link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        padding: 15px 25px;
+        font-size: 17px;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+    .nav-link:hover {
+        background: var(--purple-light);
+    }
+    
+    .nav-link i {
+        width: 25px;
+        text-align: center;
+        margin-right: 15px;
+        font-size: 20px;
+    }
+    /* Style for links without Font Awesome in this specific file */
+    .sidebar nav a {
+        padding: 18px 25px;
+        font-size: 19px;
+    }
+    .sidebar nav a:hover {
+        background: var(--purple-light);
+    }
+
+    /* Profile Footer (Included for consistency, though this HTML structure doesn't use it) */
+    .sidebar-profile {
+        width: 100%;
+        padding: 15px 20px;
+        background: var(--purple-light);
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .profile-info strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    /* ========================================================= */
+    /* --- MAIN CONTENT & FORM STYLES --- */
+    /* ========================================================= */
+
+    .main-content {
+        flex: 1;
+        margin-left: var(--sidebar-width); /* Push content over past fixed sidebar */
+        padding: 50px;
+    }
+
+    .title {
+        font-size: 30px; 
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: var(--purple-dark);
+    }
+
+    .form-card {
+        background: white;
+        padding: 45px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        max-width: 950px;
+        font-size: 18px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* Increased gap for spacing */
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 18px; 
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 14px;
+        border: 2px solid var(--input-border);
+        border-radius: 8px;
+        font-size: 17px; 
+        transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus {
+        border-color: var(--purple-dark);
+        outline: none;
+    }
+    
+    .row {
+        display: flex;
+        gap: 25px;
+    }
+
+    .col {
+        flex: 1;
+    }
+
+    .note {
+        font-size: 14px; /* Increased note font size for better readability */
+        color: #888;
+        margin-top: -10px; /* Adjust spacing above note */
+    }
+
+    .button-row {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    button {
+        padding: 12px 28px;
+        font-size: 17px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .cancel {
+        background: var(--cancel-button);
+        color: white;
+    }
+    .cancel:hover {
+        background: #c9302c;
+    }
+
+    .next {
+        background: var(--next-button);
+        color: white;
+    }
+    .next:hover {
+        background: #317431;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 100%;
+            position: static;
+            min-height: auto;
+        }
+        .main-content {
+            margin-left: 0;
+            padding: 20px;
+        }
+        .form-card {
+            padding: 25px;
+        }
+        .row {
+            flex-direction: column; /* Stack columns vertically on mobile */
+            gap: 15px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div class="top-logo">
+            <img src="picture/white logo.jpg" alt="LibReserve Logo">
+        </div>
+
+        <nav>
+            <a href="studentDashboard.html" class="nav-link"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="studentLevel.html" class="nav-link"><i class="fa-solid fa-building"></i>Level</a>
+            <a href="roomDetail.html" class="nav-link"><i class="fa-solid fa-door-open"></i>Room Detail</a>
+            <a href="profile.html" class="nav-link"><i class="fa-solid fa-user"></i>Profile</a>
+        </nav>
+        
+        <div class="sidebar-profile">
+            <div class="profile-info">
+                <strong>NURAIN BATRISYIA BINTI MOHD NOR AZWAN</strong>
+            </div>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+        <h1 class="title"><i class="fa-solid fa-calendar-check"></i> BOOKING FORM </h1>
+
+        <div class="form-card">
+            <form>
+
+                <label>Name</label>
+                <input type="text" value="NURAIN BATRISYIA BINTI MOHD NOR AZWAN" readonly>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Student/Staff ID</label>
+                        <input type="text" value="S00123456" readonly>
+                    </div>
+
+                    <div class="col">
+                        <label>Date</label>
+                        <input type="date">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Start time</label>
+                        <input type="time">
+                    </div>
+
+                    <div class="col">
+                        <label>End time</label>
+                        <input type="time">
+                    </div>
+                </div>
+
+                <p class="note">Note: Maximum booking duration is 2 hours. Availability is checked against current system bookings.</p>
+
+                <label>Purpose of booking</label>
+                <select>
+                    <option disabled selected>Please select</option>
+                    <option>Group Study</option>
+                    <option>Presentation Practice</option>
+                    <option>Meeting (Club/Society)</option>
+                    <option>Individual Study</option>
+                </select>
+
+                <label>Activity/Topic (Optional)</label>
+                <input type="text" placeholder="e.g FYP proposal review">
+
+                <div class="button-row">
+                    <button type="button" class="cancel">CANCEL</button>
+                    <button type="submit" class="next">NEXT</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+</html>

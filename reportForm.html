@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Room Issue</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+    /* --- CSS Variables --- */
+    :root {
+        --sidebar-width: 280px;
+        --purple-dark: #3c1e64;
+        --purple-light: #5e3c88;
+        --background-light: #efefef;
+        --input-border: #c6c6ff;
+        --card-border-light: #e1e1e1;
+        --cancel-button-gray: #a6a6a6;
+        --report-button-red: #d9534f; 
+        --success-green: #d4edda;
+        --success-text: #155724;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background: var(--background-light);
+        font-size: 18px;
+        display: flex;
+        min-height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        width: 100%;
+    }
+
+    /* ========================================================= */
+    /* --- FINALIZED SIDEBAR STYLES --- */
+    /* ========================================================= */
+
+    .sidebar {
+        width: var(--sidebar-width);
+        background: var(--purple-dark);
+        color: white;
+        padding: 30px 0 0 0; 
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10;
+    }
+
+    .top-logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .top-logo img {
+        width: 130px;
+    }
+
+    .sidebar nav {
+        width: 100%;
+        flex-grow: 1; 
+    }
+
+    .nav-link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        padding: 15px 25px;
+        font-size: 17px;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+    .nav-link:hover {
+        background: var(--purple-light);
+    }
+    
+    .nav-link i {
+        width: 25px;
+        text-align: center;
+        margin-right: 15px;
+        font-size: 20px;
+    }
+
+    /* Profile Footer */
+    .sidebar-profile {
+        width: 100%;
+        padding: 15px 20px;
+        background: var(--purple-light);
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .profile-info strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    /* ========================================================= */
+    /* --- MAIN CONTENT & FORM STYLES --- */
+    /* ========================================================= */
+
+    .main-content {
+        flex: 1;
+        margin-left: var(--sidebar-width);
+        padding: 50px;
+    }
+
+    .title {
+        font-size: 30px; 
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: var(--purple-dark);
+    }
+
+    .title i {
+        color: var(--report-button-red);
+        margin-right: 10px;
+    }
+
+    .form-card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px solid var(--card-border-light);
+        max-width: 950px;
+        font-size: 18px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 18px; 
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 14px;
+        border: 2px solid var(--input-border);
+        border-radius: 8px;
+        font-size: 17px; 
+        transition: border-color 0.2s;
+    }
+    
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+        line-height: 1.5;
+        padding-top: 10px;
+        font-style: italic; 
+        color: #666; 
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--purple-dark);
+        outline: none;
+    }
+
+    /* --- Custom Select Dropdown Styling for the Image --- */
+    .issue-type-select {
+        font-size: 17px;
+        color: #333;
+    }
+
+    .issue-option-list {
+        border: 1px solid var(--card-border-light);
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-top: -15px; 
+        background: #fdfdfd;
+        line-height: 1.8;
+        font-size: 16px;
+        color: #333;
+        white-space: pre;
+    }
+
+    /* --- Success Banner --- */
+    .success-message {
+        background: var(--success-green);
+        color: var(--success-text);
+        padding: 12px 20px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #c3e6cb;
+        display: none; 
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+    .success-message.show {
+        display: block;
+        opacity: 1;
+    }
+
+    /* --- Buttons --- */
+    .button-row {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 12px 28px;
+        font-size: 17px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .cancel {
+        background: var(--cancel-button-gray);
+        color: white;
+    }
+    .cancel:hover {
+        background: #909090;
+    }
+
+    .report {
+        background: var(--report-button-red);
+        color: white;
+    }
+    .report:hover {
+        background: #c9302c;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .sidebar {
+            width: 100%;
+            position: static;
+            min-height: auto;
+        }
+        .main-content {
+            margin-left: 0;
+            padding: 20px;
+        }
+        .form-card {
+            padding: 25px;
+        }
+        .button-row {
+            margin-top: 20px;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div class="top-logo">
+            <img src="picture/white logo.jpg" alt="LibReserve Logo">
+        </div>
+
+        <nav>
+            <a href="studentDashboard.html" class="nav-link"><i class="fa-solid fa-house"></i>Home</a>
+            <a href="studentLevel.html" class="nav-link"><i class="fa-solid fa-building"></i>Level</a>
+            <a href="roomDetail.html" class="nav-link"><i class="fa-solid fa-door-open"></i>Room Detail</a>
+            <a href="profile.html" class="nav-link"><i class="fa-solid fa-user"></i>Profile</a>
+        </nav>
+        
+        <div class="sidebar-profile">
+            <div class="profile-info">
+                <strong>NURAIN BATRISYIA BINTI MOHD NOR AZWAN</strong>
+            </div>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+        <h1 class="title"><i class="fa-solid fa-triangle-exclamation"></i> Report Room Issue </h1>
+
+        <div class="form-card">
+            
+            <div id="success-banner" class="success-message">
+                Issue reported successfully ! Thank you.
+            </div>
+
+            <form id="report-form" onsubmit="handleReportSubmission(event)">
+                
+                <label for="level-select">Level</label>
+                <select id="level-select" class="issue-type-select" onchange="updateRoomOptions()">
+                    <option value="Level 2" selected>Level 2</option>
+                    <option value="Level 3">Level 3</option>
+                    <option value="Level 4">Level 4</option>
+                </select>
+
+                <label for="room-select">Room</label>
+                <select id="room-select" class="issue-type-select">
+                    </select>
+
+                <label for="issue-type">Type of issue</label>
+                <select id="issue-type" class="issue-type-select">
+                    <option disabled selected>Select reason</option>
+                    <option value="equipment">Equipment Malfunction (Whiteboard)</option>
+                    <option value="cleanliness">Cleanliness</option>
+                    <option value="noise">Noise Complaint</option>
+                    <option value="furniture">Furniture Damage (Chair, Table)</option>
+                    <option value="other">Other</option>
+                </select>
+                
+                <label for="description">Description</label>
+                <textarea id="description" placeholder="e.g The projector is flickering and keeps turning off"></textarea>
+
+                <div class="button-row">
+                    <button type="button" class="cancel">CANCEL</button>
+                    <button type="submit" class="report">SUBMIT REPORT</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+</div>
+
+<script>
+    // Define rooms for each level
+    const roomData = {
+        'Level 2': [
+            'Carrel Room 1', 'Carrel Room 2', 'Carrel Room 3', 'Carrel Room 4', 'Carrel Room 5',
+            'Carrel Room 6', 'Carrel Room 7', 'Carrel Room 8', 'Carrel Room 9', 'Carrel Room 10',
+            'Postgraduate Room', 'Smart Room 1', 'Training Room 1'
+        ],
+        'Level 3': [
+            'Carrel Room 11', 'Carrel Room 12', 'Carrel Room 13', 'Carrel Room 14', 'Carrel Room 15',
+            'Carrel Room 16', 'Carrel Room 17', 'Carrel Room 18', 'Carrel Room 19', 'Carrel Room 20',
+            'Executive Meeting Room', 'Meeting Room 1', 'Meeting Room 2',
+            'Discussion Room 1', 'Discussion Room 2', 'Discussion Room 3',
+            'Discussion Room 4 ', 'Viewing Room 1'
+        ],
+        'Level 4': [
+            'Carrel Room 21', 'Carrel Room 22', 'Carrel Room 23', 'Carrel Room 24', 'Carrel Room 25',
+            'Carrel Room 26', 'Carrel Room 27', 'Carrel Room 28', 'Carrel Room 29', 'Carrel Room 30',
+            'Discussion Room 5', 'Seminar Room 1', 'Seminar Room 2'
+        ]
+    };
+
+    function updateRoomOptions() {
+        const levelSelector = document.getElementById('level-select');
+        const roomSelector = document.getElementById('room-select');
+        const selectedLevel = levelSelector.value;
+        const rooms = roomData[selectedLevel] || [];
+
+        // Clear existing options
+        roomSelector.innerHTML = '';
+        
+        // Add a placeholder option (optional)
+        const placeholderOption = document.createElement('option');
+        placeholderOption.value = '';
+        placeholderOption.textContent = 'Select a room';
+        placeholderOption.disabled = true;
+        roomSelector.appendChild(placeholderOption);
+
+        // Populate new options
+        rooms.forEach(room => {
+            const option = document.createElement('option');
+            option.value = room;
+            option.textContent = room;
+            roomSelector.appendChild(option);
+        });
+        
+        // Select the first room (or keep placeholder selected)
+        roomSelector.selectedIndex = 1; 
+    }
+
+    function handleReportSubmission(event) {
+        event.preventDefault(); 
+        
+        // --- Form Validation (Simplified Example) ---
+        const issueType = document.getElementById('issue-type').value;
+        const description = document.getElementById('description').value.trim();
+
+        if (!issueType || issueType === 'Select reason' || description.length < 10) {
+            alert("Please select an issue type and provide a description of at least 10 characters.");
+            return;
+        }
+        // --- End Validation ---
+        
+        const successBanner = document.getElementById('success-banner');
+        
+        // Show the banner
+        successBanner.classList.add('show');
+        
+        // Clear the form fields (excluding Level selection for convenience)
+        const form = document.getElementById('report-form');
+        form.reset(); 
+        
+        // Ensure dropdowns are reset correctly
+        document.getElementById('issue-type').selectedIndex = 0;
+        updateRoomOptions(); // Re-run to reset room dropdown based on current level
+
+        // Optional: Hide the success message after 5 seconds
+        setTimeout(() => {
+            successBanner.classList.remove('show');
+        }, 5000); 
+    }
+
+    // Run on load to initialize rooms for Level 2
+    document.addEventListener('DOMContentLoaded', () => {
+        updateRoomOptions(); 
+    });
+</script>
+
+</body>
+</html>

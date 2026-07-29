@@ -1,0 +1,494 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --sidebar-width: 280px;
+    --purple-dark: #3c1e64;
+    --purple-light: #5e3c88;
+    --green-confirmed: #5cb85c;
+    --red-cancelled: #d9534f;
+    --gray-light: #efefef;
+    --text-dark: #333;
+    --text-light: #666;
+    --card-border: #ddd;
+    --next-up-bg: #f7f3ff;
+    --upcoming-border: #d4edda; 
+}
+
+body {
+    background: var(--gray-light);
+    font-size: 16px;
+    color: var(--text-dark);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--purple-dark);
+    color: white;
+    padding: 30px 0 0 0; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.top-logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.top-logo img {
+    width: 130px;
+}
+
+.sidebar nav {
+    width: 100%;
+    flex-grow: 1; 
+}
+
+.nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 17px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background: var(--purple-light);
+}
+
+.nav-link.active {
+    background: var(--purple-light);
+    border-left: 5px solid white;
+    padding-left: 20px;
+}
+
+.nav-link i {
+    width: 25px;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Profile Footer */
+.sidebar-profile {
+    width: 100%;
+    padding: 15px 20px;
+    background: var(--purple-light);
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.profile-info strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* --- Main Content Styles --- */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 40px;
+    flex-grow: 1;
+}
+
+.welcome-header {
+    margin-bottom: 30px;
+}
+
+.welcome-header h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.welcome-header p {
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+/* --- Card Styles (Now stack naturally, full width) --- */
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin-bottom: 30px; 
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-dark); 
+}
+
+.card-header i {
+    margin-right: 10px;
+    color: var(--text-dark); 
+}
+.upcoming .card-header i {
+    color: var(--green-confirmed); 
+}
+
+
+/* --- Booking List Styles --- */
+.next-up-card {
+    background: var(--next-up-bg);
+    border: 1px solid var(--purple-dark);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--purple-dark);
+}
+
+.booking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+/* Specific styling for Upcoming booking items (green border and padding) */
+.upcoming .booking-item {
+    border-left: 5px solid var(--upcoming-border);
+    padding: 10px 0 10px 15px;
+    margin-bottom: 15px; 
+    border-bottom: none; 
+}
+.upcoming .booking-item:last-child {
+    margin-bottom: 0;
+}
+
+.booking-info {
+    flex-grow: 1;
+}
+
+/* Status and Cancel Button Container (Horizontal) */
+.room-status {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 10px; /* Space between status pill and cancel button */
+}
+
+/* Booking Details (Time and Date) */
+.booking-details {
+    display: flex;
+    align-items: center;
+    color: var(--text-dark); 
+    font-size: 15px;
+    margin-top: 5px;
+}
+.booking-details span {
+    margin-right: 15px;
+}
+.booking-details i {
+    margin-right: 5px;
+    font-size: 14px;
+    color: var(--text-light); /* Lighter icon color */
+}
+
+
+/* Status Pills */
+.status-pill {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 0; 
+    text-transform: capitalize;
+}
+
+.status-pill.confirmed {
+    background: #e6f3e6;
+    color: var(--green-confirmed);
+}
+
+.status-pill.cancelled {
+    background: #f8d7da;
+    color: var(--red-cancelled);
+}
+
+.status-pill.completed {
+    background: #e9ecef;
+    color: var(--text-light);
+}
+
+/* Action Buttons */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Cancel Button in Upcoming Section (Horizontal layout) */
+.btn-cancel {
+    background: none;
+    color: var(--red-cancelled);
+    border: 1px solid var(--red-cancelled);
+    padding: 5px 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+}
+
+.btn-cancel:hover {
+    background: var(--red-cancelled);
+    color: white;
+}
+
+/* Past Bookings Styling */
+.past .booking-item {
+    opacity: 1; 
+    border-left: 5px solid var(--card-border);
+    padding: 10px 0 10px 15px;
+    margin-bottom: 15px;
+    border-bottom: none;
+}
+.past .booking-item:last-child {
+    margin-bottom: 0;
+}
+.past .booking-item.cancelled {
+    border-left: 5px solid var(--red-cancelled);
+    background: #fff5f5; 
+}
+.past .booking-item.completed {
+    border-left: 5px solid #dcdcdc; 
+}
+
+/* --- Activity Card Styles --- */
+.activity-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap; 
+}
+/* Score Section */
+.score-section {
+    width: 180px;
+    text-align: center;
+}
+.score-section p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+.gauge {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--purple-dark) 60%, 
+        var(--card-border) 60%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    position: relative;
+}
+.gauge-inner {
+    position: absolute;
+    width: 118px;
+    height: 118px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--purple-dark);
+}
+/* Breakdown Section */
+.breakdown-section {
+    flex-grow: 1;
+    min-width: 280px; 
+}
+.breakdown-section h3 {
+    font-size: 16px;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.breakdown-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.item-label {
+    width: 150px;
+    font-size: 15px;
+    color: var(--text-dark);
+}
+.bar-container {
+    flex-grow: 1;
+    height: 10px;
+    background: var(--card-border);
+    border-radius: 5px;
+    margin: 0 10px;
+    overflow: hidden;
+}
+.bar {
+    height: 100%;
+    border-radius: 5px;
+}
+.bar.group-study { width: 60%; background: #4e79a7; }
+.bar.presentation { width: 20%; background: #f28e2b; }
+.bar.meeting { width: 20%; background: #e15759; }
+.item-percentage {
+    width: 40px;
+    font-size: 15px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.btn-report {
+    background: var(--red-cancelled);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.report-issue-container {
+    text-align: right; 
+    margin-top: 20px;
+}
+
+
+/* -------------------------------------- */
+/* --- Responsive Design (Media Queries) --- */
+/* -------------------------------------- */
+
+/* The cards are already stacked full-width by default, so no grid adjustments are needed here. */
+@media (max-width: 1200px) {
+    /* Optional: Fine-tune padding/margins for medium screens */
+}
+
+
+/* Mobile Screen (Max Width 768px) */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static; 
+        width: 100%;
+        min-height: auto;
+        padding-bottom: 20px;
+    }
+    .sidebar nav {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .nav-link {
+        padding: 10px 15px;
+        flex-grow: 1;
+        width: auto;
+        text-align: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+    .nav-link i {
+        margin-right: 5px;
+        font-size: 16px;
+    }
+    .nav-link.active {
+        border-left: none;
+        border-bottom: 3px solid white;
+        padding-left: 15px;
+    }
+    .sidebar-profile {
+        display: none; 
+    }
+
+    .main-content {
+        margin-left: 0; 
+        padding: 20px;
+    }
+    .welcome-header h1 {
+        font-size: 24px;
+    }
+
+    /* Stack booking info and status/actions vertically */
+    .booking-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+    
+    .next-up-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    /* Status/Action on Mobile (pushed to the right) */
+    .room-status {
+        width: 100%; 
+        justify-content: flex-end; 
+    }
+    
+    /* Keep past booking items horizontal for better use of space */
+    .past .booking-item {
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 15px;
+    }
+    .past .booking-item .room-status {
+        margin-left: auto;
+    }
+    
+    /* Stack activity score and breakdown */
+    .activity-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .score-section {
+        width: 100%;
+        order: 2; 
+    }
+    .breakdown-section {
+        width: 100%;
+        min-width: 100%;
+        order: 1; 
+    }
+
+    .report-issue-container {
+        text-align: center;
+    }
+}

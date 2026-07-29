@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Log In</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #3f2262; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .top-bar {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            color: #d1d1d1;
+        }
+
+        .top-logo img {
+            width: 100px;
+        }
+
+        .page-title {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 100px;
+            letter-spacing: 1px;
+        }
+
+        .login-box {
+            background-color: #e5e7eb;
+            width: 480px;
+            padding: 40px;
+            margin-top: 60px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-top: 0;
+            font-size: 22px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .input-section {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .input-section label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .input-section input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .forgot {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .forgot a {
+            color: #3b82f6;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #7fc443;
+            color: #133a1f;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #a0e86a;
+        }
+
+        .signup-text {
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        .signup-text a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <a href="main.html" class="back-btn">&#8592; Back</a>
+
+        <div class="top-logo">
+            <img src="picture/white logo.jpg" alt="LibReserve Logo">
+        </div>
+    </div>
+
+    <div class="page-title">WELCOME TO LIBRESERVE</div>
+
+    <div class="login-box">
+        <h2>LOG IN</h2>
+
+        <div class="input-section">
+            <label>MATRIC NUMBER / STAFF ID / ADMIN ID </label>
+            <input type="text" placeholder="Please enter your matric number or staff ID or admin ID">
+        </div>
+
+        <div class="input-section">
+            <label>PASSWORD</label>
+            <input type="password" placeholder="Please enter your password">
+        </div>
+
+        <div class="forgot">
+            <a href="forgotPassword.html">Forgot password?</a>
+        </div>
+
+        <button class="login-button"><a href="studentDashboard.html"></a>SIGN IN</button>
+
+        <div class="signup-text">
+            Don't have an account? <a href="signUp.html">Sign Up</a>
+        </div>
+    </div>
+
+</body>
+</html>
