@@ -15,10 +15,8 @@ A web-based application developed as a Final Year Project to simplify library ro
 ## 🛠️ Tech Stack
 - PHP
 - MySQL
-- HTML5
-- CSS3
+- HTML
 - JavaScript
-- Bootstrap
 - XAMPP
 - Visual Studio Code
 
